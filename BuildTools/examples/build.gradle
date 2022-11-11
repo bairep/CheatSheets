@@ -1,0 +1,26 @@
+apply plugin: 'java'
+
+task hello
+task world
+
+task helloWorld {
+    dependsOn = [world, hello]
+}
+
+hello {
+    doLast {
+        println "hello"
+    }
+}
+
+def whatsUp() {
+    println "hey what's up, I'm some imperative groovy code, dude"
+}
+
+world {
+    whatsUp()
+    dependsOn hello
+    doLast {
+        println "world"
+    }
+}
